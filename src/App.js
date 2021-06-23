@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Canvas} from "@react-three/fiber";
+import Lights from "./Three/Lights";
+import CameraControls from './Three/CameraControls';
+import Box from "./Three/Box";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Canvas
+      style={{ height: "100vh", width: "100vw", backgroundColor:'black' }} 
+      camera={{ fov: 55, near: 0.1, far: 1000, position: [-10, 0, 0] }} 
+    >
+      <Lights />
+      <CameraControls />
+      <Box position={[0, 0, 0]} />
+    </Canvas>
   );
 }
-
-export default App;
